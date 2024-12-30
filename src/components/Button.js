@@ -9,14 +9,18 @@ const Button = ({ title, onPress, style }) => (
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#007BFF',
+    width: '80%',
     padding: 12,
-    borderRadius: 4,
-    alignItems: 'center',
+    borderRadius: 8,
+    backgroundColor: '#4D81DA',
+    alignSelf: 'center', 
+    marginTop: 10,
   },
   buttonText: {
-    color: '#FFF',
+    fontSize: 18,
     fontWeight: 'bold',
+    color: '#fff',
+    alignSelf: 'center', 
   },
 });
 

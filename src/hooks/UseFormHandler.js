@@ -3,10 +3,11 @@ import { useState } from 'react';
 const useFormHandler = (initialValues) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({}); // Tracks validation attempts
 
   const handleChange = (name, value) => {
     setValues((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
+    if (errors[name] && touched[name]) {
       setErrors((prev) => ({ ...prev, [name]: null }));
     }
   };
@@ -18,6 +19,9 @@ const useFormHandler = (initialValues) => {
     Object.keys(rules).forEach((field) => {
       const value = values[field];
       const rule = rules[field];
+
+      // Mark field as touched
+      setTouched((prev) => ({ ...prev, [field]: true }));
 
       // Required field check
       if (rule.required && !value) {
